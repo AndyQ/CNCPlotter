@@ -13,8 +13,17 @@ Instructions for use:
  - Then, press Send GCode to send the GCode file to the plotter.
  
 ## Installation
- - Well, at this point in time you need to build this yourself so Xcode is required. (I'll try to get a developer signed build uploaded soon).
- - I'm, also using Cocoapods as a dependancy manager (for the serial library - ORSSerialPort (https://github.com/armadsen/ORSSerialPort) so you'll need that installed too.
+
+There are two ways of installing the app.
+The simplest is by downloading the latest released version from https://github.com/AndyQ/CNCPlotter/releases.
+
+**OR**
+
+You can build this yourself.
+If you choose to do this then:
+ - Obviously first clone the repo.
+ - Oh and of course Xcode is required to build it.
+ - I'm also using Cocoapods as a dependancy manager (for the serial library - ORSSerialPort (https://github.com/armadsen/ORSSerialPort) so you'll need that installed too.
  - Then, make sure you first do a pod install to bring down the dependancies.
  - Open the CNCPlotter.xcworkspace in Xcode (NOT the xcproject).
  - Build, run and have fun
