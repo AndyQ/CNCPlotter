@@ -12,4 +12,4 @@ Instructions for use:
  - Make sure that you press the Auto-Home button first.  This will move the plotter to the bottom left and then back into the center.
  - Then, press Send GCode to send the GCode file to the plotter.
  
-**&Disclaimer - this works nicely for my plotter (built from instructions from http://www.instructables.com/id/How-to-Make-Arduino-Based-Mini-CNC-Plotter-Using-D), however, it may not work on your plotter. You use this software entirely at your own risk.**
+**Disclaimer - this works nicely for my plotter (built from instructions from http://www.instructables.com/id/How-to-Make-Arduino-Based-Mini-CNC-Plotter-Using-D), however, it may not work on your plotter. You use this software entirely at your own risk.**
