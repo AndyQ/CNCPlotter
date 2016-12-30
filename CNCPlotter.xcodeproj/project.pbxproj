@@ -1,0 +1,386 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4BF855FC56AFBF28734C8D7C /* libPods-CNCPlotter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 469894402309FB61C85B839F /* libPods-CNCPlotter.a */; };
+		A18578A71E1706EC00598C24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578A61E1706EC00598C24 /* AppDelegate.swift */; };
+		A18578A91E1706EC00598C24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578A81E1706EC00598C24 /* ViewController.swift */; };
+		A18578AB1E1706EC00598C24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A18578AA1E1706EC00598C24 /* Assets.xcassets */; };
+		A18578AE1E1706ED00598C24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A18578AC1E1706ED00598C24 /* Main.storyboard */; };
+		A18578B71E1707B800598C24 /* DraggableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578B51E1707B800598C24 /* DraggableTextView.swift */; };
+		A18578B81E1707B800598C24 /* SerialHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578B61E1707B800598C24 /* SerialHandler.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		38ACA4B0C9884CB395C2960F /* Pods-CNCPlotter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNCPlotter.release.xcconfig"; path = "Pods/Target Support Files/Pods-CNCPlotter/Pods-CNCPlotter.release.xcconfig"; sourceTree = "<group>"; };
+		469894402309FB61C85B839F /* libPods-CNCPlotter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CNCPlotter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A18578A31E1706EC00598C24 /* CNCPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNCPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A18578A61E1706EC00598C24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A18578A81E1706EC00598C24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A18578AA1E1706EC00598C24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A18578AD1E1706ED00598C24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A18578AF1E1706ED00598C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A18578B51E1707B800598C24 /* DraggableTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableTextView.swift; sourceTree = "<group>"; };
+		A18578B61E1707B800598C24 /* SerialHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialHandler.swift; sourceTree = "<group>"; };
+		A18578B91E1707F600598C24 /* CNCPlotter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CNCPlotter-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0ACF695C9E20AF5DF5630FC /* Pods-CNCPlotter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNCPlotter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CNCPlotter/Pods-CNCPlotter.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A18578A01E1706EC00598C24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BF855FC56AFBF28734C8D7C /* libPods-CNCPlotter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2E1B7B23D885CA1207E63756 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				469894402309FB61C85B839F /* libPods-CNCPlotter.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7C4D883DBE5A4D2EE47BE9FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0ACF695C9E20AF5DF5630FC /* Pods-CNCPlotter.debug.xcconfig */,
+				38ACA4B0C9884CB395C2960F /* Pods-CNCPlotter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A185789A1E1706EC00598C24 = {
+			isa = PBXGroup;
+			children = (
+				A18578A51E1706EC00598C24 /* CNCPlotter */,
+				A18578A41E1706EC00598C24 /* Products */,
+				7C4D883DBE5A4D2EE47BE9FA /* Pods */,
+				2E1B7B23D885CA1207E63756 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A18578A41E1706EC00598C24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A18578A31E1706EC00598C24 /* CNCPlotter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A18578A51E1706EC00598C24 /* CNCPlotter */ = {
+			isa = PBXGroup;
+			children = (
+				A18578B91E1707F600598C24 /* CNCPlotter-Bridging-Header.h */,
+				A18578AC1E1706ED00598C24 /* Main.storyboard */,
+				A18578A61E1706EC00598C24 /* AppDelegate.swift */,
+				A18578A81E1706EC00598C24 /* ViewController.swift */,
+				A18578B51E1707B800598C24 /* DraggableTextView.swift */,
+				A18578B61E1707B800598C24 /* SerialHandler.swift */,
+				A18578AA1E1706EC00598C24 /* Assets.xcassets */,
+				A18578AF1E1706ED00598C24 /* Info.plist */,
+			);
+			path = CNCPlotter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A18578A21E1706EC00598C24 /* CNCPlotter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A18578B21E1706ED00598C24 /* Build configuration list for PBXNativeTarget "CNCPlotter" */;
+			buildPhases = (
+				C4DB688183A3A8FEE948AB02 /* [CP] Check Pods Manifest.lock */,
+				A185789F1E1706EC00598C24 /* Sources */,
+				A18578A01E1706EC00598C24 /* Frameworks */,
+				A18578A11E1706EC00598C24 /* Resources */,
+				7E592E9695B3D4B10C565B02 /* [CP] Embed Pods Frameworks */,
+				946D3B9954644D59075B9E2B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CNCPlotter;
+			productName = CNCPlotter;
+			productReference = A18578A31E1706EC00598C24 /* CNCPlotter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A185789B1E1706EC00598C24 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Andy Qua";
+				TargetAttributes = {
+					A18578A21E1706EC00598C24 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = A4ZM73UFF5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A185789E1E1706EC00598C24 /* Build configuration list for PBXProject "CNCPlotter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A185789A1E1706EC00598C24;
+			productRefGroup = A18578A41E1706EC00598C24 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A18578A21E1706EC00598C24 /* CNCPlotter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A18578A11E1706EC00598C24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A18578AB1E1706EC00598C24 /* Assets.xcassets in Resources */,
+				A18578AE1E1706ED00598C24 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7E592E9695B3D4B10C565B02 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CNCPlotter/Pods-CNCPlotter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		946D3B9954644D59075B9E2B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CNCPlotter/Pods-CNCPlotter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4DB688183A3A8FEE948AB02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A185789F1E1706EC00598C24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A18578B81E1707B800598C24 /* SerialHandler.swift in Sources */,
+				A18578B71E1707B800598C24 /* DraggableTextView.swift in Sources */,
+				A18578A91E1706EC00598C24 /* ViewController.swift in Sources */,
+				A18578A71E1706EC00598C24 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A18578AC1E1706ED00598C24 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A18578AD1E1706ED00598C24 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A18578B01E1706ED00598C24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A18578B11E1706ED00598C24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		A18578B31E1706ED00598C24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0ACF695C9E20AF5DF5630FC /* Pods-CNCPlotter.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A4ZM73UFF5;
+				INFOPLIST_FILE = CNCPlotter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.CNCPlotter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CNCPlotter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A18578B41E1706ED00598C24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38ACA4B0C9884CB395C2960F /* Pods-CNCPlotter.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = A4ZM73UFF5;
+				INFOPLIST_FILE = CNCPlotter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.CNCPlotter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CNCPlotter-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A185789E1E1706EC00598C24 /* Build configuration list for PBXProject "CNCPlotter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A18578B01E1706ED00598C24 /* Debug */,
+				A18578B11E1706ED00598C24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A18578B21E1706ED00598C24 /* Build configuration list for PBXNativeTarget "CNCPlotter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A18578B31E1706ED00598C24 /* Debug */,
+				A18578B41E1706ED00598C24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A185789B1E1706EC00598C24 /* Project object */;
+}
