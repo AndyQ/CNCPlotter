@@ -2,8 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="7104"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -663,11 +665,11 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="CNCPlotter" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="CNC Plotter" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="725" height="644"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -683,11 +685,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="CNCPlotter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="725" height="482"/>
+                        <rect key="frame" x="0.0" y="0.0" width="725" height="644"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tNv-fN-bgT">
-                                <rect key="frame" x="18" y="445" width="113" height="17"/>
+                                <rect key="frame" x="18" y="607" width="113" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="USB Serial Device" id="ZJ4-iy-NQC">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -695,7 +697,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fqf-dG-KYw">
-                                <rect key="frame" x="265" y="412" width="92" height="32"/>
+                                <rect key="frame" x="265" y="574" width="92" height="32"/>
                                 <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cw7-s5-pns">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -705,7 +707,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FdP-L4-CNK">
-                                <rect key="frame" x="218" y="412" width="47" height="32"/>
+                                <rect key="frame" x="218" y="574" width="47" height="32"/>
                                 <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1V0-su-fNV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -715,7 +717,7 @@
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EdB-gc-324">
-                                <rect key="frame" x="20" y="416" width="199" height="26"/>
+                                <rect key="frame" x="20" y="578" width="199" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="196" id="aUj-mf-1nD"/>
                                 </constraints>
@@ -726,7 +728,7 @@
                                 </comboBoxCell>
                             </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Euf-kw-Ln9">
-                                <rect key="frame" x="20" y="372" width="46" height="17"/>
+                                <rect key="frame" x="20" y="534" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GCode" id="gga-2u-OGj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -734,7 +736,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWR-xO-EZ3">
-                                <rect key="frame" x="374" y="372" width="54" height="17"/>
+                                <rect key="frame" x="20" y="150" width="54" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Console" id="7ai-Ht-2bm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -742,7 +744,7 @@
                                 </textFieldCell>
                             </textField>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnp-qg-mIL">
-                                <rect key="frame" x="20" y="20" width="328" height="344"/>
+                                <rect key="frame" x="20" y="182" width="328" height="344"/>
                                 <clipView key="contentView" id="FBm-LB-RQa">
                                     <rect key="frame" x="1" y="1" width="326" height="342"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -752,12 +754,16 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="326" height="342"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <size key="maxSize" width="681" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="344" id="053-LV-mlk"/>
+                                    <constraint firstAttribute="width" constant="328" id="sAy-ya-fba"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="ZEZ-ET-OLY">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -768,17 +774,17 @@
                                 </scroller>
                             </scrollView>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fse-c2-uWw">
-                                <rect key="frame" x="375" y="20" width="330" height="344"/>
+                                <rect key="frame" x="20" y="20" width="685" height="125"/>
                                 <clipView key="contentView" id="rxX-tM-26G">
-                                    <rect key="frame" x="1" y="1" width="328" height="342"/>
+                                    <rect key="frame" x="1" y="1" width="683" height="123"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="vfi-5X-AUZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="342"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="683" height="123"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="328" height="342"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <size key="minSize" width="683" height="123"/>
+                                            <size key="maxSize" width="703" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
@@ -789,12 +795,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rX0-Av-tOc">
-                                    <rect key="frame" x="313" y="1" width="16" height="342"/>
+                                    <rect key="frame" x="668" y="1" width="16" height="123"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tyl-lD-SMv">
-                                <rect key="frame" x="639" y="361" width="72" height="32"/>
+                                <rect key="frame" x="639" y="143" width="72" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xHZ-8Y-GnR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -804,7 +810,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fIv-bt-okL">
-                                <rect key="frame" x="488" y="438" width="76" height="32"/>
+                                <rect key="frame" x="488" y="600" width="76" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="lm0-cE-jsH"/>
                                 </constraints>
@@ -817,7 +823,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xql-sy-mCy">
-                                <rect key="frame" x="426" y="410" width="64" height="32"/>
+                                <rect key="frame" x="426" y="572" width="64" height="32"/>
                                 <buttonCell key="cell" type="push" title="Left" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aNi-Vi-qF7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -827,7 +833,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kOn-nZ-bw0">
-                                <rect key="frame" x="559" y="410" width="72" height="32"/>
+                                <rect key="frame" x="559" y="572" width="72" height="32"/>
                                 <buttonCell key="cell" type="push" title="Right" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fRM-ky-p46">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -837,7 +843,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UGu-f6-OlV">
-                                <rect key="frame" x="489" y="379" width="75" height="32"/>
+                                <rect key="frame" x="489" y="541" width="75" height="32"/>
                                 <buttonCell key="cell" type="push" title="Down" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SdP-3r-2ZQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -847,7 +853,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nxb-DH-WhV">
-                                <rect key="frame" x="488" y="410" width="76" height="32"/>
+                                <rect key="frame" x="488" y="572" width="76" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="8py-to-6AM"/>
                                 </constraints>
@@ -860,7 +866,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lwt-9g-4wc">
-                                <rect key="frame" x="380" y="438" width="110" height="32"/>
+                                <rect key="frame" x="380" y="600" width="110" height="32"/>
                                 <buttonCell key="cell" type="push" title="Auto-Home" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Utg-S2-ApN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -870,7 +876,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rHZ-sI-hIQ">
-                                <rect key="frame" x="636" y="438" width="73" height="32"/>
+                                <rect key="frame" x="636" y="600" width="73" height="32"/>
                                 <buttonCell key="cell" type="push" title="Raise" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dih-47-DZE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -880,7 +886,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FWr-x9-B4S">
-                                <rect key="frame" x="634" y="410" width="77" height="32"/>
+                                <rect key="frame" x="634" y="572" width="77" height="32"/>
                                 <buttonCell key="cell" type="push" title="Lower" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xUG-cO-UjW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -890,7 +896,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jmQ-ut-mm8">
-                                <rect key="frame" x="284" y="363" width="69" height="32"/>
+                                <rect key="frame" x="284" y="525" width="69" height="32"/>
                                 <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p4V-rl-JT4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -900,7 +906,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wd2-Xa-jEV">
-                                <rect key="frame" x="167" y="362" width="117" height="32"/>
+                                <rect key="frame" x="167" y="524" width="117" height="32"/>
                                 <buttonCell key="cell" type="push" title="Send GCode" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="81V-aE-mqr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -909,28 +915,67 @@
                                     <action selector="sendGCodePressed:" target="XfG-lQ-9wD" id="Rcn-Hb-WW2"/>
                                 </connections>
                             </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ssF-BD-YGa" customClass="GCodeRenderingView" customModule="CNCPlotter" customModuleProvider="target">
+                                <rect key="frame" x="356" y="182" width="347" height="344"/>
+                            </customView>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQT-I0-sbj">
+                                <rect key="frame" x="643" y="529" width="60" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Xc6-tq-qeQ"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="MAm-FI-idz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="CBy-rJ-SEo"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fao-9H-tPZ">
+                                <rect key="frame" x="588" y="532" width="49" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scaling" id="3Fm-jC-pC9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5xT-Dx-xHZ">
+                                <rect key="frame" x="350" y="523" width="87" height="32"/>
+                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mti-Qb-7zY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="refreshVisualisationPressed:" target="XfG-lQ-9wD" id="SLP-a3-GhN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="tnp-qg-mIL" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="0KK-fU-5QP"/>
                             <constraint firstItem="f2X-Nh-DHb" firstAttribute="top" secondItem="wd2-Xa-jEV" secondAttribute="bottom" constant="6" id="2Pt-T5-3n7"/>
                             <constraint firstItem="Lwt-9g-4wc" firstAttribute="top" secondItem="fIv-bt-okL" secondAttribute="top" id="3fq-5r-qGX"/>
                             <constraint firstItem="fIv-bt-okL" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="16" id="7Vf-hV-rUo"/>
-                            <constraint firstAttribute="bottom" secondItem="tnp-qg-mIL" secondAttribute="bottom" constant="20" id="9BM-ES-eHA"/>
                             <constraint firstItem="FdP-L4-CNK" firstAttribute="centerY" secondItem="EdB-gc-324" secondAttribute="centerY" id="9RH-Xq-k6h"/>
                             <constraint firstItem="jmQ-ut-mm8" firstAttribute="leading" secondItem="wd2-Xa-jEV" secondAttribute="trailing" constant="12" id="CRK-GN-sot"/>
                             <constraint firstItem="nxb-DH-WhV" firstAttribute="leading" secondItem="xql-sy-mCy" secondAttribute="trailing" constant="10" id="E54-fl-M1F"/>
-                            <constraint firstItem="Fse-c2-uWw" firstAttribute="top" secondItem="Tyl-lD-SMv" secondAttribute="bottom" constant="4" id="FOU-8J-WCC"/>
+                            <constraint firstItem="HQT-I0-sbj" firstAttribute="centerY" secondItem="fao-9H-tPZ" secondAttribute="centerY" id="EtS-2Z-Dtz"/>
                             <constraint firstItem="UGu-f6-OlV" firstAttribute="top" secondItem="kOn-nZ-bw0" secondAttribute="bottom" constant="10" id="FOc-Ck-rm2"/>
                             <constraint firstItem="EdB-gc-324" firstAttribute="top" secondItem="tNv-fN-bgT" secondAttribute="bottom" constant="5" id="HxY-yV-H4e"/>
                             <constraint firstItem="f2X-Nh-DHb" firstAttribute="top" secondItem="jmQ-ut-mm8" secondAttribute="bottom" constant="7" id="Le6-4b-N1m"/>
+                            <constraint firstItem="pWR-xO-EZ3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="22" id="Op7-aD-cOm"/>
+                            <constraint firstItem="ssF-BD-YGa" firstAttribute="top" secondItem="5xT-Dx-xHZ" secondAttribute="bottom" constant="4" id="PAr-bw-q28"/>
                             <constraint firstAttribute="bottom" secondItem="Fse-c2-uWw" secondAttribute="bottom" constant="20" id="Q8v-6I-cNs"/>
+                            <constraint firstItem="vfi-5X-AUZ" firstAttribute="top" secondItem="Tyl-lD-SMv" secondAttribute="bottom" constant="6" id="RFS-3a-a3B"/>
                             <constraint firstAttribute="trailing" secondItem="Tyl-lD-SMv" secondAttribute="trailing" constant="20" id="RWh-QL-MCf"/>
+                            <constraint firstItem="ssF-BD-YGa" firstAttribute="bottom" secondItem="tnp-qg-mIL" secondAttribute="bottom" id="RfA-OE-ahR"/>
                             <constraint firstItem="FWr-x9-B4S" firstAttribute="centerX" secondItem="rHZ-sI-hIQ" secondAttribute="centerX" id="RoP-bK-fhA"/>
                             <constraint firstItem="Euf-kw-Ln9" firstAttribute="top" secondItem="EdB-gc-324" secondAttribute="bottom" constant="31" id="S3D-XX-J64"/>
                             <constraint firstItem="tNv-fN-bgT" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="T1z-gC-QUa"/>
-                            <constraint firstItem="tnp-qg-mIL" firstAttribute="width" secondItem="vfi-5X-AUZ" secondAttribute="width" id="TNw-gd-udu"/>
                             <constraint firstItem="rHZ-sI-hIQ" firstAttribute="top" secondItem="fIv-bt-okL" secondAttribute="top" id="TzT-f6-Stf"/>
-                            <constraint firstItem="pWR-xO-EZ3" firstAttribute="top" secondItem="Euf-kw-Ln9" secondAttribute="top" id="ZVQ-ck-BWe"/>
+                            <constraint firstItem="Fse-c2-uWw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="VTe-KS-dqM"/>
+                            <constraint firstAttribute="trailing" secondItem="ssF-BD-YGa" secondAttribute="trailing" constant="22" id="Y7G-oz-GNu"/>
+                            <constraint firstItem="ssF-BD-YGa" firstAttribute="leading" secondItem="tnp-qg-mIL" secondAttribute="trailing" constant="8" id="ZdH-iM-nB2"/>
                             <constraint firstItem="Lwt-9g-4wc" firstAttribute="trailing" secondItem="xql-sy-mCy" secondAttribute="trailing" id="a4t-UR-0yF"/>
                             <constraint firstItem="nxb-DH-WhV" firstAttribute="centerY" secondItem="xql-sy-mCy" secondAttribute="centerY" id="anP-dY-9Q5"/>
                             <constraint firstItem="Euf-kw-Ln9" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="22" id="aw6-wB-OHQ"/>
@@ -938,34 +983,133 @@
                             <constraint firstItem="nxb-DH-WhV" firstAttribute="centerX" secondItem="fIv-bt-okL" secondAttribute="centerX" id="bM6-bd-pkH"/>
                             <constraint firstAttribute="trailing" secondItem="rHZ-sI-hIQ" secondAttribute="trailing" constant="22" id="dYN-cA-JbL"/>
                             <constraint firstItem="tNv-fN-bgT" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="eSa-aW-FuB"/>
-                            <constraint firstItem="Fse-c2-uWw" firstAttribute="top" secondItem="pWR-xO-EZ3" secondAttribute="bottom" constant="8" id="elf-v0-bxd"/>
                             <constraint firstItem="tnp-qg-mIL" firstAttribute="top" secondItem="Euf-kw-Ln9" secondAttribute="bottom" constant="8" id="ezd-wn-d5D"/>
+                            <constraint firstItem="HQT-I0-sbj" firstAttribute="leading" secondItem="fao-9H-tPZ" secondAttribute="trailing" constant="8" id="hB7-dy-GVX"/>
                             <constraint firstItem="FWr-x9-B4S" firstAttribute="top" secondItem="kOn-nZ-bw0" secondAttribute="top" id="hyt-pc-ho6"/>
                             <constraint firstAttribute="trailing" secondItem="kOn-nZ-bw0" secondAttribute="trailing" constant="100" id="iRL-pa-RFZ"/>
                             <constraint firstItem="UGu-f6-OlV" firstAttribute="centerX" secondItem="fIv-bt-okL" secondAttribute="centerX" id="jDE-1y-h84"/>
-                            <constraint firstItem="pWR-xO-EZ3" firstAttribute="leading" secondItem="vfi-5X-AUZ" secondAttribute="leading" id="lWo-cH-yDu"/>
+                            <constraint firstItem="5xT-Dx-xHZ" firstAttribute="leading" secondItem="ssF-BD-YGa" secondAttribute="leading" id="lOO-zr-PIe"/>
                             <constraint firstItem="fqf-dG-KYw" firstAttribute="leading" secondItem="FdP-L4-CNK" secondAttribute="trailing" constant="12" id="lgE-ch-Six"/>
-                            <constraint firstAttribute="trailing" secondItem="Fse-c2-uWw" secondAttribute="trailing" constant="20" id="ljh-Ce-KOs"/>
                             <constraint firstItem="xql-sy-mCy" firstAttribute="top" secondItem="kOn-nZ-bw0" secondAttribute="top" id="mQB-2W-fAQ"/>
+                            <constraint firstItem="vfi-5X-AUZ" firstAttribute="top" secondItem="pWR-xO-EZ3" secondAttribute="bottom" constant="6" id="meH-Qm-UTX"/>
+                            <constraint firstItem="ssF-BD-YGa" firstAttribute="top" secondItem="tnp-qg-mIL" secondAttribute="top" id="oZm-9T-vTA"/>
+                            <constraint firstItem="HQT-I0-sbj" firstAttribute="trailing" secondItem="ssF-BD-YGa" secondAttribute="trailing" id="pba-e7-1Mb"/>
+                            <constraint firstAttribute="trailing" secondItem="Fse-c2-uWw" secondAttribute="trailing" constant="20" id="peC-r1-ClK"/>
                             <constraint firstItem="EdB-gc-324" firstAttribute="leading" secondItem="tNv-fN-bgT" secondAttribute="leading" id="qhb-55-SgW"/>
+                            <constraint firstItem="ssF-BD-YGa" firstAttribute="top" secondItem="HQT-I0-sbj" secondAttribute="bottom" constant="3" id="qo5-DW-rSa"/>
                             <constraint firstItem="FdP-L4-CNK" firstAttribute="leading" secondItem="EdB-gc-324" secondAttribute="trailing" constant="8" id="sW0-QS-fUe"/>
+                            <constraint firstItem="Fse-c2-uWw" firstAttribute="top" secondItem="tnp-qg-mIL" secondAttribute="bottom" constant="37" id="u3W-QY-KAT"/>
                             <constraint firstItem="kOn-nZ-bw0" firstAttribute="top" secondItem="fIv-bt-okL" secondAttribute="bottom" constant="7" id="ukf-8n-Ksf"/>
-                            <constraint firstItem="Fse-c2-uWw" firstAttribute="leading" secondItem="tnp-qg-mIL" secondAttribute="trailing" constant="27" id="vJf-gu-4yD"/>
                             <constraint firstItem="kOn-nZ-bw0" firstAttribute="leading" secondItem="nxb-DH-WhV" secondAttribute="trailing" constant="7" id="xF3-Gc-asb"/>
                             <constraint firstItem="fqf-dG-KYw" firstAttribute="centerY" secondItem="FdP-L4-CNK" secondAttribute="centerY" id="xXL-nt-1re"/>
                         </constraints>
                     </view>
+                    <touchBar key="touchBar" id="upw-9j-LNw">
+                        <touchBarItems>
+                            <touchBarItem id="1tD-mf-G2B">
+                                <viewController key="viewController" id="vFX-0i-3ZS">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZBD-Sy-jpd">
+                                        <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
+                                        <buttonCell key="cell" type="push" title="Send GCode" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EWA-VG-QrU">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="sendGCodePressed:" target="XfG-lQ-9wD" id="paX-eU-cjH"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                                <size key="designTimeSize" width="108" height="30"/>
+                            </touchBarItem>
+                            <touchBarItem id="rxJ-zq-aAF">
+                                <viewController key="viewController" id="f4A-lb-iCk">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n54-DI-OSD">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <buttonCell key="cell" type="push" title="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3HA-wM-NQh">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="stopPressed:" target="XfG-lQ-9wD" id="wdq-YY-12j"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarItem id="5to-WN-atL">
+                                <viewController key="viewController" id="5cv-Az-1iV">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vww-Tq-hFl">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                        <buttonCell key="cell" type="push" title="Auto Home" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RiT-hQ-PnV">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="rehomePressed:" target="XfG-lQ-9wD" id="tNK-g4-kd1"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                                <size key="designTimeSize" width="90" height="30"/>
+                            </touchBarItem>
+                            <touchBarItem id="s96-6n-0kN">
+                                <viewController key="viewController" id="vtd-jK-rrE">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M2M-vO-sS4">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <buttonCell key="cell" type="push" title="Home" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="07l-ik-qZg">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="homePressed:" target="XfG-lQ-9wD" id="Jpk-Gx-K9a"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarItem id="1Xc-YM-Fno">
+                                <viewController key="viewController" id="enW-Zc-Vlq">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ssq-y8-aP9">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <buttonCell key="cell" type="push" title="Lower" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8cN-Yd-ocP">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="lowerPenPressed:" target="XfG-lQ-9wD" id="Wi5-Wn-VpT"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarItem id="EOx-hE-hwy">
+                                <viewController key="viewController" id="dLJ-DH-Ihq">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cuw-FN-6da">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <buttonCell key="cell" type="push" title="Raise" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gaI-bR-gur">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="raisePenPressed:" target="XfG-lQ-9wD" id="rBW-A4-nEK"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                        </touchBarItems>
+                        <connections>
+                            <outlet property="delegate" destination="XfG-lQ-9wD" id="egd-vf-26Y"/>
+                        </connections>
+                    </touchBar>
                     <connections>
                         <outlet property="connectedBtn" destination="fqf-dG-KYw" id="RHQ-8M-lem"/>
+                        <outlet property="gcodeView" destination="ssF-BD-YGa" id="x9P-3e-sjd"/>
                         <outlet property="refreshBtn" destination="FdP-L4-CNK" id="JPm-jh-ROa"/>
                         <outlet property="serialDeviceCombo" destination="EdB-gc-324" id="wFQ-lm-LWs"/>
                         <outlet property="txtConsole" destination="vfi-5X-AUZ" id="8Ku-GT-HNL"/>
                         <outlet property="txtGCode" destination="f2X-Nh-DHb" id="9hi-jP-3Ve"/>
+                        <outlet property="txtScaling" destination="HQT-I0-sbj" id="rfT-qB-Bo2"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197.5" y="761"/>
+            <point key="canvasLocation" x="191.5" y="1111"/>
         </scene>
     </scenes>
     <resources>

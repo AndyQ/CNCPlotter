@@ -8,10 +8,11 @@
 
 import Cocoa
 
+let notif_newDataAvailable = NSNotification.Name("NOTIF_NewDataAvailable")
+
 class DraggableTextView: NSTextView {
     
-    var acceptableTypes: Set<String> { return [NSURLPboardType] } //,NSFilenamesPboardType] }
-//    let filteringOptions = [NSPasteboardURLReadingContentsConformToTypesKey:NSString.imageTypes()]
+    var acceptableTypes: Set<String> { return [NSURLPboardType] }
     
     
     var isReceivingDrag = false {
@@ -61,17 +62,8 @@ class DraggableTextView: NSTextView {
         
         if let urls = pasteBoard.readObjects(forClasses: [NSURL.self], options: [:]) as? [URL], urls.count > 0 {
             dump( "Found URLs - \(urls)")
-            
-            do {
-                let str = try String(contentsOf: urls[0])
-                self.string = str
-            } catch let err {
-                Swift.print( "Error loading file - \(err)")
-            }
-            
-            // Load first URL
-//            _ = dm.loadImage( fromUrl:urls[0] )
-            setNeedsDisplay(bounds)
+            NotificationCenter.default.post(name: notif_newDataAvailable, object: nil, userInfo: ["url":urls[0]])
+
             return true
         }
         

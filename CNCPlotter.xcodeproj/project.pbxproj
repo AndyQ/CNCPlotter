@@ -8,17 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		4BF855FC56AFBF28734C8D7C /* libPods-CNCPlotter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 469894402309FB61C85B839F /* libPods-CNCPlotter.a */; };
+		A167D2291E19D2140003CDC8 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D2281E19D2140003CDC8 /* StringExt.swift */; };
+		A167D22B1E1B0FE40003CDC8 /* TouchBarIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D22A1E1B0FE40003CDC8 /* TouchBarIdentifiers.swift */; };
+		A167D22D1E1B10E80003CDC8 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D22C1E1B10E80003CDC8 /* WindowController.swift */; };
 		A18578A71E1706EC00598C24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578A61E1706EC00598C24 /* AppDelegate.swift */; };
 		A18578A91E1706EC00598C24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578A81E1706EC00598C24 /* ViewController.swift */; };
 		A18578AB1E1706EC00598C24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A18578AA1E1706EC00598C24 /* Assets.xcassets */; };
 		A18578AE1E1706ED00598C24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A18578AC1E1706ED00598C24 /* Main.storyboard */; };
 		A18578B71E1707B800598C24 /* DraggableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578B51E1707B800598C24 /* DraggableTextView.swift */; };
 		A18578B81E1707B800598C24 /* SerialHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578B61E1707B800598C24 /* SerialHandler.swift */; };
+		A18578BD1E19BA3000598C24 /* GCodeRenderingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578BC1E19BA3000598C24 /* GCodeRenderingView.swift */; };
+		A18578BF1E19BB2500598C24 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578BE1E19BB2500598C24 /* Regex.swift */; };
+		A18578C11E19BDD800598C24 /* GCodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18578C01E19BDD800598C24 /* GCodeParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		38ACA4B0C9884CB395C2960F /* Pods-CNCPlotter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNCPlotter.release.xcconfig"; path = "Pods/Target Support Files/Pods-CNCPlotter/Pods-CNCPlotter.release.xcconfig"; sourceTree = "<group>"; };
 		469894402309FB61C85B839F /* libPods-CNCPlotter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CNCPlotter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A167D2281E19D2140003CDC8 /* StringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		A167D22A1E1B0FE40003CDC8 /* TouchBarIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchBarIdentifiers.swift; sourceTree = "<group>"; };
+		A167D22C1E1B10E80003CDC8 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A18578A31E1706EC00598C24 /* CNCPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNCPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A18578A61E1706EC00598C24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A18578A81E1706EC00598C24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +37,9 @@
 		A18578B51E1707B800598C24 /* DraggableTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableTextView.swift; sourceTree = "<group>"; };
 		A18578B61E1707B800598C24 /* SerialHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialHandler.swift; sourceTree = "<group>"; };
 		A18578B91E1707F600598C24 /* CNCPlotter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CNCPlotter-Bridging-Header.h"; sourceTree = "<group>"; };
+		A18578BC1E19BA3000598C24 /* GCodeRenderingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCodeRenderingView.swift; sourceTree = "<group>"; };
+		A18578BE1E19BB2500598C24 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		A18578C01E19BDD800598C24 /* GCodeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCodeParser.swift; sourceTree = "<group>"; };
 		D0ACF695C9E20AF5DF5630FC /* Pods-CNCPlotter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNCPlotter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CNCPlotter/Pods-CNCPlotter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,10 +95,16 @@
 			children = (
 				A18578B91E1707F600598C24 /* CNCPlotter-Bridging-Header.h */,
 				A18578AC1E1706ED00598C24 /* Main.storyboard */,
+				A167D22A1E1B0FE40003CDC8 /* TouchBarIdentifiers.swift */,
 				A18578A61E1706EC00598C24 /* AppDelegate.swift */,
+				A167D22C1E1B10E80003CDC8 /* WindowController.swift */,
 				A18578A81E1706EC00598C24 /* ViewController.swift */,
 				A18578B51E1707B800598C24 /* DraggableTextView.swift */,
 				A18578B61E1707B800598C24 /* SerialHandler.swift */,
+				A18578BC1E19BA3000598C24 /* GCodeRenderingView.swift */,
+				A18578C01E19BDD800598C24 /* GCodeParser.swift */,
+				A18578BE1E19BB2500598C24 /* Regex.swift */,
+				A167D2281E19D2140003CDC8 /* StringExt.swift */,
 				A18578AA1E1706EC00598C24 /* Assets.xcassets */,
 				A18578AF1E1706ED00598C24 /* Info.plist */,
 			);
@@ -217,9 +235,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A18578B81E1707B800598C24 /* SerialHandler.swift in Sources */,
+				A167D22D1E1B10E80003CDC8 /* WindowController.swift in Sources */,
+				A18578BD1E19BA3000598C24 /* GCodeRenderingView.swift in Sources */,
+				A167D2291E19D2140003CDC8 /* StringExt.swift in Sources */,
 				A18578B71E1707B800598C24 /* DraggableTextView.swift in Sources */,
+				A167D22B1E1B0FE40003CDC8 /* TouchBarIdentifiers.swift in Sources */,
 				A18578A91E1706EC00598C24 /* ViewController.swift in Sources */,
 				A18578A71E1706EC00598C24 /* AppDelegate.swift in Sources */,
+				A18578C11E19BDD800598C24 /* GCodeParser.swift in Sources */,
+				A18578BF1E19BB2500598C24 /* Regex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +356,7 @@
 			baseConfigurationReference = D0ACF695C9E20AF5DF5630FC /* Pods-CNCPlotter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				INFOPLIST_FILE = CNCPlotter/Info.plist;
@@ -348,6 +373,7 @@
 			baseConfigurationReference = 38ACA4B0C9884CB395C2960F /* Pods-CNCPlotter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				INFOPLIST_FILE = CNCPlotter/Info.plist;

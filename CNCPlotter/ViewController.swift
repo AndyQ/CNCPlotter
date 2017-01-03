@@ -13,21 +13,51 @@ extension NSTextView {
         self.textStorage?.append(NSAttributedString(string: string))
         self.scrollToEndOfDocument(nil)
     }
+    
+    @available(OSX 10.12.2, *)
+    override open func makeTouchBar() -> NSTouchBar? {
+        
+        let touchBar = super.makeTouchBar()
+        touchBar?.delegate = self
+        
+        return touchBar
+    }
+
 }
 
+class NumberValueFormatter : NumberFormatter {
 
-class ViewController: NSViewController {
+    override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+        if (partialString.utf8.count == 0) {
+            return true
+        }
+        
+        if (partialString.rangeOfCharacter(from:NSCharacterSet(charactersIn: "1234567890.").inverted) != nil) {
+            NSBeep()
+            return false
+        }
+        
+        return true
+    }
+}
+
+ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var connectedBtn: NSButton!
     @IBOutlet weak var refreshBtn: NSButton!
     @IBOutlet weak var serialDeviceCombo: NSComboBox!
     @IBOutlet var txtGCode: NSTextView!
     @IBOutlet var txtConsole: NSTextView!
+    @IBOutlet weak var gcodeView: GCodeRenderingView!
+    @IBOutlet weak var txtScaling: NSTextField!
 
     var serialHandler : SerialHandler!
     var serialDevices = [String]()
     
     var streaming = false
     var gcode = [String]()
+    var gcodeFile : GCodeFile!
+    
+    var scale : Float = 1.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +79,42 @@ class ViewController: NSViewController {
         
         // Get the list of serial devices
         refreshSerialPorts( autoConnectIfPossible:true)
+        
+        // Register for notifications of new gcode data
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.gcodeUpdated(_:)), name: notif_newDataAvailable, object: nil)
+        
+        let formatter = NumberFormatter()
+        formatter.usesSignificantDigits = false
+        formatter.allowsFloats = true
+        formatter.numberStyle = .decimal
 
+        self.txtScaling.formatter = NumberValueFormatter()
     }
 
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
+        }
+    }
+    
+    func gcodeUpdated( _ notification : NSNotification ) {
+        
+        guard let url = notification.userInfo?["url"] as? URL else { return }
+        
+        do {
+            let str = try String(contentsOf: url)
+            let lines = str.components(separatedBy: "\n")
+            gcodeFile = GCodeFile(lines: lines)
+            let stringRepresentation = gcodeFile!.writeGCode(scale: 1.0)
+            
+            txtGCode.string = stringRepresentation
+            
+            gcodeView.gcodeFile = gcodeFile!
+            gcodeView.setNeedsDisplay(gcodeView.bounds)
+            
+            self.txtScaling.stringValue = "1.0"
+        } catch let err {
+            Swift.print( "Error loading file - \(err)")
         }
     }
 
@@ -78,7 +138,6 @@ class ViewController: NSViewController {
                 serialHandler.open( device: device)
             }
         }
-        
     }
 
     @IBAction func connectPressed(_ sender: AnyObject) {
@@ -105,6 +164,7 @@ class ViewController: NSViewController {
     
     @IBAction func stopPressed(_ sender: AnyObject) {
         self.gcode.removeAll(keepingCapacity: false)
+        raisePenPressed(self)
     }
     
     @IBAction func clearConsolePressed(_ sender: AnyObject) {
@@ -143,6 +203,17 @@ class ViewController: NSViewController {
         serialHandler.send( "D\n")
     }
     
+    @IBAction func refreshVisualisationPressed(_ sender: AnyObject) {
+        // Update gcode with changes.
+        let stringRepresentation = gcodeFile!.writeGCode(scale: scale)
+        txtGCode.string = stringRepresentation
+        
+        gcodeView.scale = scale
+        gcodeView.setNeedsDisplay(gcodeView.bounds)
+
+        
+    }
+    
     func sendGCode() {
         if gcode.count == 0 {
             if streaming {
@@ -161,9 +232,8 @@ class ViewController: NSViewController {
 
         if line != "" {
             line += "\n"
-            //txtConsole.append(string: line )
+            
             serialHandler.send(line)
-//            print( "Sending \(line)")
         }
     }
 
@@ -196,15 +266,12 @@ class ViewController: NSViewController {
 
                 currentLine.append(c)
                 if c == "\n" {
-//                    print( "  currLine - [\(currentLine)]")
                     txtConsole.append(string: currentLine)
                     
                     if currentLine == "ok\n" {
-//                        print( "Sending next gcode")
                         sendGCode()
                     } else {
                         if currentLine.hasPrefix(("ok") ) {
-//                            print( "Currentline - \(currentLine)")
                         }
                     }
                     currentLine = ""
@@ -212,5 +279,52 @@ class ViewController: NSViewController {
             }
         }
     }
+    
+    
+    override func controlTextDidChange(_ notification: Notification) {
+
+        if let textField = notification.object as? NSTextField,
+            let formatter = textField.formatter as? NumberFormatter,
+            let field_editor = textField.currentEditor() {
+                if let val: Float = formatter.number(from: field_editor.string!)?.floatValue {
+                    scale = val
+                    
+                    let stringRepresentation = gcodeFile!.writeGCode(scale: scale)
+                    txtGCode.string = stringRepresentation
+
+                    gcodeView.scale = scale
+                    gcodeView.setNeedsDisplay(gcodeView.bounds)
+                }
+        }
+
+
+    }
 }
 
+
+@available(OSX 10.12.2, *)
+extension ViewController: NSTouchBarDelegate {
+    override func makeTouchBar() -> NSTouchBar? {
+        // 1
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        // 2
+        touchBar.customizationIdentifier = .travelBar
+        // 3
+        touchBar.defaultItemIdentifiers = [.infoLabelItem]
+        // 4
+        touchBar.customizationAllowedItemIdentifiers = [.infoLabelItem]
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
+        switch identifier {
+        case NSTouchBarItemIdentifier.infoLabelItem:
+            let customViewItem = NSCustomTouchBarItem(identifier: identifier)
+            customViewItem.view = NSTextField(labelWithString: "Connect")
+            return customViewItem
+        default:
+            return nil
+        }
+    }
+}
