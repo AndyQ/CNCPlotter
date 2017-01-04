@@ -41,6 +41,11 @@ class NumberValueFormatter : NumberFormatter {
     }
 }
 
+let xMin = -20
+let xMax = 20
+let yMin = -20
+let yMax = 20
+
  class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var connectedBtn: NSButton!
     @IBOutlet weak var refreshBtn: NSButton!
@@ -55,7 +60,7 @@ class NumberValueFormatter : NumberFormatter {
     
     var streaming = false
     var gcode = [String]()
-    var gcodeFile : GCodeFile!
+    var gcodeFile : GCodeFile?
     
     var scale : Float = 1.0
 
@@ -153,18 +158,24 @@ class NumberValueFormatter : NumberFormatter {
     }
     
     @IBAction func sendGCodePressed(_ sender: AnyObject) {
+        gcodeView.resetProgress()
         self.txtConsole.string = ""
+        /*
         if let text = self.txtGCode.string {
             streaming = true
             gcode = text.components(separatedBy: "\n")
         }
-        
+        */
+        streaming = true
+        currentLineNr = 0
         sendGCode()
     }
     
     @IBAction func stopPressed(_ sender: AnyObject) {
-        self.gcode.removeAll(keepingCapacity: false)
         raisePenPressed(self)
+        streaming = false
+
+        gcodeView.resetProgress()
     }
     
     @IBAction func clearConsolePressed(_ sender: AnyObject) {
@@ -172,19 +183,19 @@ class NumberValueFormatter : NumberFormatter {
     }
     
     @IBAction func upPressed(_ sender: AnyObject) {
-        serialHandler.send( "G01 Y17\nM18\n")
+        serialHandler.send( "G01 Y\(yMax)\nM18\n")
     }
     
     @IBAction func downPressed(_ sender: AnyObject) {
-        serialHandler.send( "G01 Y-17\nM18\n")
+        serialHandler.send( "G01 Y\(yMin)\nM18\n")
     }
     
     @IBAction func leftPressed(_ sender: AnyObject) {
-        serialHandler.send( "G01 X-17\nM18\n")
+        serialHandler.send( "G01 X\(xMin)\nM18\n")
     }
     
     @IBAction func rightPressed(_ sender: AnyObject) {
-        serialHandler.send( "G01 X17\nM18\n")
+        serialHandler.send( "G01 X\(xMax)\nM18\n")
     }
     
     @IBAction func homePressed(_ sender: AnyObject) {
@@ -204,18 +215,30 @@ class NumberValueFormatter : NumberFormatter {
     }
     
     @IBAction func refreshVisualisationPressed(_ sender: AnyObject) {
+        gcodeView.resetProgress()
+
         // Update gcode with changes.
+        guard let str = txtGCode.string else { return }
+        let lines = str.components(separatedBy: "\n")
+        gcodeFile = GCodeFile(lines: lines)
         let stringRepresentation = gcodeFile!.writeGCode(scale: scale)
+        
         txtGCode.string = stringRepresentation
         
-        gcodeView.scale = scale
+        gcodeView.gcodeFile = gcodeFile!
         gcodeView.setNeedsDisplay(gcodeView.bounds)
-
-        
     }
     
+    var currentLineNr = 0
     func sendGCode() {
-        if gcode.count == 0 {
+        if !streaming
+        {
+            return
+        }
+        
+        guard let gcode = gcodeFile else { return }
+        
+        if currentLineNr >= gcode.items.count {
             if streaming {
                 streaming = false
                 // turn off motors
@@ -226,14 +249,17 @@ class NumberValueFormatter : NumberFormatter {
         
         // Pop first line from the list and send it
         var line = ""
-        while line == "" && gcode.count > 0 {
-            line = gcode.remove(at: 0).trimmingCharacters(in: .whitespacesAndNewlines)
+        while line == "" && currentLineNr < gcode.items.count {
+            line = gcode.items[currentLineNr].writeGCode(scale: scale).trimmingCharacters(in: .whitespacesAndNewlines)
+            currentLineNr += 1
         }
 
         if line != "" {
             line += "\n"
             
+//            print( "Sending \(line)")
             serialHandler.send(line)
+            gcodeView.showProgress(gcodeLine: gcode.items[currentLineNr])
         }
     }
 
@@ -283,13 +309,15 @@ class NumberValueFormatter : NumberFormatter {
     
     override func controlTextDidChange(_ notification: Notification) {
 
+        guard let gcodeFile = gcodeFile else { return }
+        
         if let textField = notification.object as? NSTextField,
             let formatter = textField.formatter as? NumberFormatter,
             let field_editor = textField.currentEditor() {
                 if let val: Float = formatter.number(from: field_editor.string!)?.floatValue {
                     scale = val
                     
-                    let stringRepresentation = gcodeFile!.writeGCode(scale: scale)
+                    let stringRepresentation = gcodeFile.writeGCode(scale: scale)
                     txtGCode.string = stringRepresentation
 
                     gcodeView.scale = scale

@@ -10,11 +10,17 @@ import Cocoa
 
 class GCodeRenderingView: NSView  {
     var paths = [NSBezierPath]()
+    var progressPaths = [NSBezierPath]()
     
     var gcodeFile : GCodeFile!
     
     var scale : Float = 1.0
+    var plotSize = 40
+    
+    var xScale : CGFloat = 1
+    var yScale : CGFloat = 1
 
+    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         
@@ -29,11 +35,17 @@ class GCodeRenderingView: NSView  {
         for path in paths {
             path.stroke()
         }
+        NSColor.red.set() // choose color
+        for path in progressPaths {
+            path.stroke()
+        }
     }
     
     
     func generatePaths() {
-        
+        xScale = self.bounds.width / CGFloat(plotSize)
+        yScale = self.bounds.height / CGFloat(plotSize)
+
         paths.removeAll()
         var drawing = false
         
@@ -41,54 +53,78 @@ class GCodeRenderingView: NSView  {
         currentPath.lineWidth = 2
         paths.append(currentPath)
         
-        let xScale = self.bounds.width / 34
-        let yScale = self.bounds.height / 34
 
         var lineNr = 0
         for item in gcodeFile.items {
             lineNr += 1
-            // We are initially only doing stuff if the pen is down
-            if item.type == "M" && item.value == 300 {
-                if let val = item.children["S"] {
-                    if val == 30 {
-                        drawing = true
-                    } else {
-                        drawing = false
-                        currentPath = NSBezierPath()
-                        currentPath.lineWidth = 2
-                        paths.append(currentPath)
-                    }
-                }
-            }
-                            
-            if item.type == "G" {
-                if item.value == 0 || item.value == 1 {
-                    var x :CGFloat = 0
-                    var y :CGFloat = 0
-                    // Now grab out the X and Y coords
-                    if let xVal = item.children["X"],
-                        let yVal = item.children["Y"] {
-                        
-                        x = CGFloat(xVal)
-                        y = CGFloat(yVal)
-                    }
+            
+            if item.isPenDown() {
+                drawing = true
+            } else if item.isPenUp() {
+                drawing = false
+                currentPath = NSBezierPath()
+                currentPath.lineWidth = 2
+                paths.append(currentPath)
+            } else if item.isMove() {
+                var (x,y) = item.getPosition()
 
-                    x *= CGFloat(scale)
-                    y *= CGFloat(scale)
-                    
-                    // Need to scale x and y to our view (in this app, x/y go between -17 and 17 (or 0-34)
-                    x = (x + 17) * xScale
-                    y = (y + 17) * yScale
-                    
-                    // Drawing
-                    if !drawing {
-                        currentPath.move(to: NSMakePoint(x, y)) // start point
-                    } else {
-                        currentPath.line(to: NSMakePoint(x, y)) // destination
-                    }
+                x *= CGFloat(scale)
+                y *= CGFloat(scale)
+                
+                // Need to scale x and y to our view (in this app, x/y go between plotSize/2 (or 0-plotSize)
+                x = (x + CGFloat(plotSize/2)) * xScale
+                y = (y + CGFloat(plotSize/2)) * yScale
+                
+                // Drawing
+                if !drawing {
+                    currentPath.move(to: NSMakePoint(x, y)) // start point
+                } else {
+                    currentPath.line(to: NSMakePoint(x, y)) // destination
                 }
             }
         }
+    }
+    
+    
+    func resetProgress() {
+        self.progressPaths.removeAll()
+        setNeedsDisplay(self.bounds)
+    }
+    
+    var drawing = false
+    var lastPoint : CGPoint?
+    func showProgress( gcodeLine : GCodeItem ) {
+        // Parse line
+        if gcodeLine.isPenDown() {
+            drawing = true
+        } else if gcodeLine.isPenUp() {
+            drawing = false
+        } else if gcodeLine.isMove() {
+            var (x,y) = gcodeLine.getPosition()
+            
+            x *= CGFloat(scale)
+            y *= CGFloat(scale)
+            
+            // Need to scale x and y to our view (in this app, x/y go between plotSize/2 (or 0-plotSize)
+            x = (x + CGFloat(plotSize/2)) * xScale
+            y = (y + CGFloat(plotSize/2)) * yScale
+
+            if let lp = lastPoint {
+                if drawing {
+                    let path = NSBezierPath()
+                    path.lineWidth = 2
+                    path.move(to: NSMakePoint(lp.x, lp.y)) // start point
+                    path.line(to: NSMakePoint(x, y)) // destination
+                    progressPaths.append(path)
+                }
+                lastPoint = CGPoint(x: x, y: y)
+            } else {
+                lastPoint = CGPoint(x: x, y: y)
+            }
+        }
+        
+        
+        setNeedsDisplay(self.bounds)
     }
     
     func testData() -> [String] {

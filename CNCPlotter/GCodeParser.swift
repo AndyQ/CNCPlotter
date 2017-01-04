@@ -12,13 +12,15 @@ class GCodeItem : CustomStringConvertible {
     var type : String = ""
     var value : Int = 0
     var elements : [String]
+    var comments : String = ""
     
     var children = [String:Float]()
     
-    init( elements : [String] ) {
+    init( elements : [String], comments : String ) {
         var i = 0
         
         self.elements = elements
+        self.comments = comments
         for element in elements {
             var cmd = element.substring(to: 1)
             var val : Float = 0
@@ -39,7 +41,11 @@ class GCodeItem : CustomStringConvertible {
     }
     
     func writeGCode( scale : Float ) -> String {
-        var ret = "\(type)\(value)"
+        
+        var ret = ""
+        if type != "" {
+            ret = "\(type)\(value)"
+        }
 
         for (key, var val) in children {
             if "XYZ".contains(key) {
@@ -48,7 +54,56 @@ class GCodeItem : CustomStringConvertible {
             ret += " \(key)\(val)"
         }
 
+        ret += comments
+        
         return ret
+    }
+    
+    func isPenUp() -> Bool {
+        var ret = false
+        if type == "M" && value == 300 {
+            if let val = children["S"],
+                val == 50 {
+                
+                ret = true
+            }
+        }
+        
+        return ret
+    }
+    
+    func isPenDown() -> Bool {
+        var ret = false
+        if type == "M" && value == 300 {
+            if let val = children["S"],
+                val == 30 {
+                
+                ret = true
+            }
+        }
+        return ret
+    }
+    
+    func isMove() -> Bool {
+        return type == "G" && (value == 0 || value == 1)
+    }
+    
+    func getPosition() -> (CGFloat,CGFloat) {
+        if !isMove() {
+            return (0,0)
+        }
+        var x :CGFloat = 0
+        var y :CGFloat = 0
+        
+        // Now grab out the X and Y coords
+        if let xVal = children["X"],
+            let yVal = children["Y"] {
+            
+            x = CGFloat(xVal)
+            y = CGFloat(yVal)
+        }
+
+        return (x,y)
     }
     
     var description: String {
@@ -64,6 +119,9 @@ class GCodeFile : CustomStringConvertible {
 //    let re4 = Regex("([a-zA-Z][0-9\\+\\-\\.]*)|(\\*[0-9]+)*(\\(.*\\))")
 
     var items = [GCodeItem]()
+    
+    init() {
+    }
 
     init( lines : [String] ) {
         parseGCode( lines: lines )
@@ -71,19 +129,23 @@ class GCodeFile : CustomStringConvertible {
     
     func parseGCode( lines : [String] ) {
         for line in lines {
-            parseGCodeLine(line:line)
+            let gcodeItem = parseGCodeLine(line:line)
+            items.append(gcodeItem)
         }
     }
     
-    func parseGCodeLine( line : String )  {
+    func parseGCodeLine( line : String ) -> GCodeItem  {
+        
+        // First, take a copy of the comments
+        let commentItems = getComments( line:line )
+        let comments = commentItems.count > 0 ? commentItems[0] : ""
+        
         var ret = stripComments( line:line )
         ret = removeSpaces( line:ret ).uppercased()
         
         let elements = re4.match(input: ret)
-        if elements.count > 0 {
-            let gcodeItem = GCodeItem(elements:elements)
-            items.append(gcodeItem)
-        }
+        let gcodeItem = GCodeItem(elements:elements, comments:comments)
+        return gcodeItem
     }
     
 
@@ -92,6 +154,19 @@ class GCodeFile : CustomStringConvertible {
         return s
 
     }
+    func getComments( line : String ) -> [String] {
+        let c1 = re1.match(input: line)
+        let c2 = re2.match(input: line)
+        var ret = [String]()
+        if c1.count > 0 {
+            ret.append(contentsOf:c1)
+        }
+        if c2.count > 0 {
+            ret.append(contentsOf:c2)
+        }
+        return ret
+    }
+    
     func stripComments( line : String ) -> String {
         
         let s = re1.replace(input: line, replacement: "")
