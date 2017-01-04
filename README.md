@@ -12,4 +12,20 @@ Instructions for use:
  - Make sure that you press the Auto-Home button first.  This will move the plotter to the bottom left and then back into the center.
  - Then, press Send GCode to send the GCode file to the plotter.
  
+## Installation
+
+There are two ways of installing the app.
+The simplest is by downloading the latest released version from https://github.com/AndyQ/CNCPlotter/releases.
+
+**OR**
+
+You can build this yourself.
+If you choose to do this then:
+ - Obviously first clone the repo.
+ - Oh and of course Xcode is required to build it.
+ - I'm also using Cocoapods as a dependancy manager (for the serial library - ORSSerialPort (https://github.com/armadsen/ORSSerialPort) so you'll need that installed too.
+ - Then, make sure you first do a pod install to bring down the dependancies.
+ - Open the CNCPlotter.xcworkspace in Xcode (NOT the xcproject).
+ - Build, run and have fun
+ 
 **Disclaimer - this works nicely for my plotter (built from instructions from http://www.instructables.com/id/How-to-Make-Arduino-Based-Mini-CNC-Plotter-Using-D), however, it may not work on your plotter. You use this software entirely at your own risk.**
