@@ -94,6 +94,17 @@ let yMax = 20
         formatter.numberStyle = .decimal
 
         self.txtScaling.formatter = NumberValueFormatter()
+        
+/*
+        var r = SVGReader()
+        r.test()
+        let lines = r.writeGCode()
+
+        gcodeFile = GCodeFile(lines: lines)
+        let stringRepresentation = gcodeFile!.writeGCode(scale: 1.0)
+        
+        txtGCode.string = stringRepresentation
+*/
     }
 
     override var representedObject: Any? {
@@ -294,7 +305,7 @@ let yMax = 20
                 if c == "\n" {
                     txtConsole.append(string: currentLine)
                     
-                    if currentLine == "ok\n" {
+                    if currentLine == "ok\n" || currentLine == "OK" {
                         sendGCode()
                     } else {
                         if currentLine.hasPrefix(("ok") ) {

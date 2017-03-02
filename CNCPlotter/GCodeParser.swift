@@ -61,12 +61,15 @@ class GCodeItem : CustomStringConvertible {
     
     func isPenUp() -> Bool {
         var ret = false
-        if type == "M" && value == 300 {
+        if type == "M" && (value == 300 ) {
             if let val = children["S"],
-                val == 50 {
+                val == 50 || val == 90 {
                 
                 ret = true
             }
+        }
+        if type == "M" && (value == 190 ) {
+            ret = true
         }
         
         return ret
@@ -74,13 +77,18 @@ class GCodeItem : CustomStringConvertible {
     
     func isPenDown() -> Bool {
         var ret = false
-        if type == "M" && value == 300 {
+        if type == "M" && (value == 300 || value == 1) {
             if let val = children["S"],
-                val == 30 {
+                val == 30 || val == 130 {
                 
                 ret = true
             }
         }
+        
+        if type == "M" && (value == 1130 ) {
+            ret = true
+        }
+
         return ret
     }
     

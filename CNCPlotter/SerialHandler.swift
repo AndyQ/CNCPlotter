@@ -39,7 +39,7 @@ class SerialHandler : NSObject, ORSSerialPortDelegate {
     func findSerialDevices(deviceType: String,  serialPortIterator: inout io_iterator_t ) -> kern_return_t {
         var result: kern_return_t = KERN_FAILURE
         let classesToMatch = IOServiceMatching(kIOSerialBSDServiceValue)
-        if var classesToMatchDict = (classesToMatch as! NSMutableDictionary) as NSDictionary as? [String: Any] {
+        if var classesToMatchDict = (classesToMatch!) as NSDictionary as? [String: Any] {
             classesToMatchDict[kIOSerialBSDTypeKey] = deviceType
             let classesToMatchCFDictRef = (classesToMatchDict as NSDictionary) as CFDictionary
             result = IOServiceGetMatchingServices(kIOMasterPortDefault, classesToMatchCFDictRef, &serialPortIterator);
@@ -76,7 +76,7 @@ class SerialHandler : NSObject, ORSSerialPortDelegate {
         } else {
             self.serialPort = ORSSerialPort(path: device) // please adjust to your handle
             self.serialPort?.delegate = self
-            self.serialPort?.baudRate = 9600
+            self.serialPort?.baudRate = 115200
             self.serialPort?.rts = true
             self.serialPort?.dtr = true
             serialPort?.open()

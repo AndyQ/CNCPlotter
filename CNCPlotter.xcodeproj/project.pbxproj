@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4BF855FC56AFBF28734C8D7C /* libPods-CNCPlotter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 469894402309FB61C85B839F /* libPods-CNCPlotter.a */; };
+		A129DA7E1E27C2AF00FC7C85 /* SVGReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129DA7D1E27C2AF00FC7C85 /* SVGReader.swift */; };
+		A129DA801E27CC9900FC7C85 /* tmp.svg in Resources */ = {isa = PBXBuildFile; fileRef = A129DA7F1E27CC9900FC7C85 /* tmp.svg */; };
 		A167D2291E19D2140003CDC8 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D2281E19D2140003CDC8 /* StringExt.swift */; };
 		A167D22B1E1B0FE40003CDC8 /* TouchBarIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D22A1E1B0FE40003CDC8 /* TouchBarIdentifiers.swift */; };
 		A167D22D1E1B10E80003CDC8 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D22C1E1B10E80003CDC8 /* WindowController.swift */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		38ACA4B0C9884CB395C2960F /* Pods-CNCPlotter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNCPlotter.release.xcconfig"; path = "Pods/Target Support Files/Pods-CNCPlotter/Pods-CNCPlotter.release.xcconfig"; sourceTree = "<group>"; };
 		469894402309FB61C85B839F /* libPods-CNCPlotter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CNCPlotter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A129DA7D1E27C2AF00FC7C85 /* SVGReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVGReader.swift; sourceTree = "<group>"; };
+		A129DA7F1E27CC9900FC7C85 /* tmp.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tmp.svg; sourceTree = "<group>"; };
 		A167D2281E19D2140003CDC8 /* StringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		A167D22A1E1B0FE40003CDC8 /* TouchBarIdentifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchBarIdentifiers.swift; sourceTree = "<group>"; };
 		A167D22C1E1B10E80003CDC8 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
@@ -103,10 +107,12 @@
 				A18578B61E1707B800598C24 /* SerialHandler.swift */,
 				A18578BC1E19BA3000598C24 /* GCodeRenderingView.swift */,
 				A18578C01E19BDD800598C24 /* GCodeParser.swift */,
+				A129DA7D1E27C2AF00FC7C85 /* SVGReader.swift */,
 				A18578BE1E19BB2500598C24 /* Regex.swift */,
 				A167D2281E19D2140003CDC8 /* StringExt.swift */,
 				A18578AA1E1706EC00598C24 /* Assets.xcassets */,
 				A18578AF1E1706ED00598C24 /* Info.plist */,
+				A129DA7F1E27CC9900FC7C85 /* tmp.svg */,
 			);
 			path = CNCPlotter;
 			sourceTree = "<group>";
@@ -174,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A129DA801E27CC9900FC7C85 /* tmp.svg in Resources */,
 				A18578AB1E1706EC00598C24 /* Assets.xcassets in Resources */,
 				A18578AE1E1706ED00598C24 /* Main.storyboard in Resources */,
 			);
@@ -236,6 +243,7 @@
 			files = (
 				A18578B81E1707B800598C24 /* SerialHandler.swift in Sources */,
 				A167D22D1E1B10E80003CDC8 /* WindowController.swift in Sources */,
+				A129DA7E1E27C2AF00FC7C85 /* SVGReader.swift in Sources */,
 				A18578BD1E19BA3000598C24 /* GCodeRenderingView.swift in Sources */,
 				A167D2291E19D2140003CDC8 /* StringExt.swift in Sources */,
 				A18578B71E1707B800598C24 /* DraggableTextView.swift in Sources */,
@@ -361,6 +369,7 @@
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				INFOPLIST_FILE = CNCPlotter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.CNCPlotter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CNCPlotter-Bridging-Header.h";
@@ -378,6 +387,7 @@
 				DEVELOPMENT_TEAM = A4ZM73UFF5;
 				INFOPLIST_FILE = CNCPlotter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andyqua.CNCPlotter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CNCPlotter-Bridging-Header.h";

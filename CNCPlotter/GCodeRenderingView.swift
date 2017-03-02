@@ -15,6 +15,7 @@ class GCodeRenderingView: NSView  {
     var gcodeFile : GCodeFile!
     
     var scale : Float = 1.0
+//    var plotSize = 300
     var plotSize = 40
     
     var xScale : CGFloat = 1
