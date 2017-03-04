@@ -76,7 +76,8 @@ class SerialHandler : NSObject, ORSSerialPortDelegate {
         } else {
             self.serialPort = ORSSerialPort(path: device) // please adjust to your handle
             self.serialPort?.delegate = self
-            self.serialPort?.baudRate = 115200
+            self.serialPort?.baudRate = 9600
+//            self.serialPort?.baudRate = 115200
             self.serialPort?.rts = true
             self.serialPort?.dtr = true
             serialPort?.open()
